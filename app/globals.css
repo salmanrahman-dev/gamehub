@@ -1,26 +1,362 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   GameHub — Global Design System
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ------------------------------------------------------------------------
+     Core Theme
+     ------------------------------------------------------------------------ */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  /* ------------------------------------------------------------------------
+     Surfaces
+     ------------------------------------------------------------------------ */
+  --card: #ffffff;
+  --card-elevated: #ffffff;
+
+  /* ------------------------------------------------------------------------
+     Text & Borders
+     ------------------------------------------------------------------------ */
+  --muted: #64748b;
+  --border: #e2e8f0;
+
+  /* ------------------------------------------------------------------------
+     Brand / Primary
+     ------------------------------------------------------------------------ */
+  --primary: #0bb4aa;
+  --primary-dark: #078f87;
+  --primary-soft: #ecfdfb;
+
+  /* ------------------------------------------------------------------------
+     Supporting Surfaces
+     ------------------------------------------------------------------------ */
+  --surface-soft: #f1f5f9;
+  --surface-muted: #e2e8f0;
+
+  /* ------------------------------------------------------------------------
+     Shadows
+     ------------------------------------------------------------------------ */
+  --shadow-color: rgba(15, 23, 42, 0.08);
 }
+
+/* ==========================================================================
+   Dark Theme
+   ========================================================================== */
+
+.dark {
+  /* ------------------------------------------------------------------------
+     Core Theme
+     ------------------------------------------------------------------------ */
+  --background: #020617;
+  --foreground: #f8fafc;
+
+  /* ------------------------------------------------------------------------
+     Surfaces
+     ------------------------------------------------------------------------ */
+  --card: #0f172a;
+  --card-elevated: #111c31;
+
+  /* ------------------------------------------------------------------------
+     Text & Borders
+     ------------------------------------------------------------------------ */
+  --muted: #94a3b8;
+  --border: #1e293b;
+
+  /* ------------------------------------------------------------------------
+     Brand / Primary
+     ------------------------------------------------------------------------ */
+  --primary: #14b8ad;
+  --primary-dark: #0d9488;
+  --primary-soft: #042f2e;
+
+  /* ------------------------------------------------------------------------
+     Supporting Surfaces
+     ------------------------------------------------------------------------ */
+  --surface-soft: #0f172a;
+  --surface-muted: #1e293b;
+
+  /* ------------------------------------------------------------------------
+     Shadows
+     ------------------------------------------------------------------------ */
+  --shadow-color: rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   Tailwind Theme Tokens
+   ========================================================================== */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background: var(--background);
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
+
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* ==========================================================================
+   Dark Mode — Existing Utility Classes
+   --------------------------------------------------------------------------
+   These overrides remain intentionally because the current GameHub pages
+   still use standard Tailwind slate/white utilities directly.
+   ========================================================================== */
+
+.dark {
+  scrollbar-color: #334155 transparent;
+}
+
+.dark .bg-white {
+  background-color: #0f172a;
+}
+
+.dark .bg-slate-50 {
+  background-color: #020617;
+}
+
+.dark .bg-slate-100 {
+  background-color: #1e293b;
+}
+
+.dark .text-slate-900 {
+  color: #f8fafc;
+}
+
+.dark .text-slate-800 {
+  color: #e2e8f0;
+}
+
+.dark .text-slate-700 {
+  color: #cbd5e1;
+}
+
+.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+
+.dark .text-slate-500 {
+  color: #94a3b8;
+}
+
+.dark .text-slate-400 {
+  color: #64748b;
+}
+
+.dark .border-slate-200 {
+  border-color: #1e293b;
+}
+
+.dark .border-slate-200\/80 {
+  border-color: rgba(30, 41, 59, 0.8);
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1e293b;
+}
+
+/* ==========================================================================
+   Dark Mode — Teal Surfaces
+   ========================================================================== */
+
+.dark .bg-teal-50 {
+  background-color: #042f2e;
+}
+
+.dark .text-teal-700 {
+  color: #5eead4;
+}
+
+.dark .border-teal-200 {
+  border-color: #115e59;
+}
+
+/* ==========================================================================
+   Interactive Elements
+   ========================================================================== */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Selection
+   ========================================================================== */
+
+::selection {
+  background: rgba(11, 180, 170, 0.2);
+  color: var(--foreground);
+}
+
+/* ==========================================================================
+   Game Cards
+   ========================================================================== */
+
+.game-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(11, 180, 170, 0.45);
+
+  box-shadow:
+    0 16px 40px var(--shadow-color);
+}
+
+/* ==========================================================================
+   Shared Theme Transitions
+   ========================================================================== */
+
+html,
+body,
+header,
+section,
+article,
+aside,
+footer,
+button,
+a,
+input {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* ==========================================================================
+   Focus Accessibility
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Documentation — Reading Experience
+   ========================================================================== */
+
+code,
+pre {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Documentation — Anchor Navigation
+   ========================================================================== */
+
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ==========================================================================
+   Documentation — Soft Surface Utilities
+   ========================================================================== */
+
+.docs-surface {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+.docs-surface-soft {
+  background: var(--surface-soft);
+  border-color: var(--border);
+}
+
+/* ==========================================================================
+   Documentation — Elevated Surface
+   ========================================================================== */
+
+.docs-surface-elevated {
+  background: var(--card-elevated);
+  border-color: var(--border);
+}
+
+/* ==========================================================================
+   Documentation — Subtle Glow
+   ========================================================================== */
+
+.docs-glow {
+  box-shadow:
+    0 20px 60px var(--shadow-color);
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
