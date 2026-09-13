@@ -54,7 +54,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <GameCard
               emoji="❌⭕"
               title="Tic-Tac-Toe"
@@ -75,6 +75,90 @@ export default function Home() {
               description="Guess the secret number using as few attempts as possible."
               href="/games/guess"
             />
+            <GameCard
+  emoji="🐍"
+  title="Snake"
+  description="Grow your snake, collect food, and survive as long as possible."
+  href="/games/snake"
+/>
+
+<GameCard
+  emoji="🚗"
+  title="Car Dash"
+  description="Switch lanes, dodge traffic, and see how long you can stay on the road."
+  href="/games/car"
+/>
+
+<GameCard
+  emoji="🟩"
+  title="Wordle"
+  description="Find the hidden five-letter word before your guesses run out."
+  href="/games/wordle"
+/>
+
+<GameCard
+  emoji="🧠"
+  title="Memory Match"
+  description="Flip the cards, remember their positions, and match every pair."
+  href="/games/memory"
+/>
+
+<GameCard
+  emoji="⚡"
+  title="Quick Quiz"
+  description="Answer fast, test your knowledge, and build your highest score."
+  href="/games/quiz"
+/>
+
+<GameCard
+  emoji="🧱"
+  title="Block Breaker"
+  description="Break the blocks, control the paddle, and chase a high score."
+  href="/games/block-breaker"
+/>
+
+<GameCard
+  emoji="🦖"
+  title="Dino Runner"
+  description="Run, jump, dodge obstacles, and survive the longest."
+  href="/games/dino-runner"
+/>
+
+<GameCard
+  emoji="🐦"
+  title="Sky Hopper"
+  description="Navigate through obstacles and keep your character flying."
+  href="/games/sky-hopper"
+/>
+
+<GameCard
+  emoji="👾"
+  title="Space Invaders"
+  description="Defend your ship and destroy the incoming alien fleet."
+  href="/games/space-invaders"
+/>
+
+<GameCard
+  emoji="🟩🟨🟧🟥🟪🟦"
+  title="Tetris"
+  description="Stack falling blocks, clear lines, and chase a higher score."
+  href="/games/tetris"
+/>
+
+<GameCard
+  emoji="🟡"
+  title="Maze Chase"
+  description="Collect every dot, avoid the chaser, and escape the maze."
+  href="/games/maze-chase"
+/>
+
+<GameCard
+  emoji="🎨"
+  title="Color Tile"
+  description="Test your reaction speed by finding the correct color."
+  href="/games/color-tile"
+/>
+
           </div>
         </section>
 

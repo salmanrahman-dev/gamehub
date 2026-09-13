@@ -344,6 +344,52 @@ pre {
 }
 
 /* ==========================================================================
+   🚗 Car Dash — Road Animations
+   ========================================================================== */
+
+@keyframes roadMove {
+  from {
+    background-position-y: 0;
+  }
+
+  to {
+    background-position-y: 110px;
+  }
+}
+
+@keyframes roadsideMove {
+  from {
+    transform: translateY(-90px);
+  }
+
+  to {
+    transform: translateY(700px);
+  }
+}
+
+@keyframes carCrash {
+  0% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translateX(-5px) rotate(-5deg) scale(1.03);
+  }
+
+  50% {
+    transform: translateX(6px) rotate(6deg) scale(1.05);
+  }
+
+  75% {
+    transform: translateX(-4px) rotate(-4deg) scale(1.02);
+  }
+
+  100% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+/* ==========================================================================
    Reduced Motion
    ========================================================================== */
 
